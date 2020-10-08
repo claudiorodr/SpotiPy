@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Sample Python code for youtube.channels.list
+# Sample Python code for youtube.playlists.list
 # See instructions for running these code samples locally:
 # https://developers.google.com/explorer-help/guides/code_samples#python
 
@@ -20,7 +20,7 @@ def main():
 
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = "YOUR_CLIENT_SECRET_FILE.json"
+    client_secrets_file = "client_secret_1048604022009-f78i3dtd6r9mkpses9o008jvuge0i4d5.apps.googleusercontent.com.json"
 
     # Get credentials and create an API client
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
@@ -29,9 +29,10 @@ def main():
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
 
-    request = youtube.channels().list(
-        part="snippet,contentDetails,statistics",
-        id="UC_x5XG1OV2P6uZZ5FSM9Ttw"
+    request = youtube.playlistItems().list(
+        part="snippet,contentDetails",
+        maxResults=25,
+        playlistId="PL83nMBA5ZI6aTpUxf273Tnxkb-YfaGTC0"
     )
     response = request.execute()
 
@@ -40,3 +41,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
